@@ -7,7 +7,7 @@ struct node{
     int x, y;
 } nd[101][101];
 
-// line=1 dot=2
+// none=0 line=1 dot=2
 
 int area_cnt(){
     int cnt=0;
@@ -20,44 +20,37 @@ int area_cnt(){
 }
 
 void add(int r, int c){
-    int index_up=r-1, index_down=r+1, index_left=c-1, index_right=c+1;
+    int index_up=r, index_down=r, index_left=c, index_right=c;
     arr[r][c] = 2;
     // up
-    while(index_up>=-1){
-        if (index_up==-1){
-            index_up=r;
+    for(int i=r-1; i>=0; i--){
+        if(arr[i][c]==2){
+            index_up = i;
             break;
         }
-        if(arr[index_up][c]==2)    break;
-        index_up--;
     }
     // down
-    while(index_down<=m){
-        if (index_down==m){
-            index_down=r;
+    for(int i=r+1;i<m;i++){
+        if (arr[i][c]==2){
+            index_down = i;
             break;
         }
-        if(arr[index_down][c]==2)    break;
-        index_down++;
     }
     // left
-    while(index_left>=-1){
-        if (index_left==-1){
-            index_left=c;
+    for(int i=c-1;i>=0;i--){
+        if (arr[r][i]==2){
+            index_left = i;
             break;
         }
-        if(arr[r][index_left]==2)    break;
-        index_left--;
     }
     // down
-    while(index_right<=n){
-        if (index_right==n){
-            index_right=c;
+    for(int i=c+1;i<n;i++){
+        if (arr[r][i]==2){
+            index_right = i;
             break;
         }
-        if(arr[r][index_right]==2)    break;
-        index_right++;
     }
+
     for(int i=index_up+1;i<index_down;i++){
         if (i==r)   continue;
         nd[i][c].y = 1;
@@ -75,40 +68,32 @@ void remove(int r, int c){
     int index_up=r-1, index_down=r+1, index_left=c-1, index_right=c+1;
     arr[r][c] = 0;
     // up
-    while(index_up>=-1){
-        if (index_up==-1){
-            index_up=r;
+    for(int i=r-1; i>=0; i--){
+        if(arr[i][c]==2){
+            index_up = i;
             break;
         }
-        if(arr[index_up][c]==2)    break;
-        index_up--;
     }
     // down
-    while(index_down<=m){
-        if (index_down==m){
-            index_down=r;
+    for(int i=r+1;i<m;i++){
+        if (arr[i][c]==2){
+            index_down = i;
             break;
         }
-        if(arr[index_down][c]==2)    break;
-        index_down++;
     }
     // left
-    while(index_left>=-1){
-        if (index_left==-1){
-            index_left=c;
+    for(int i=c-1;i>=0;i--){
+        if (arr[r][i]==2){
+            index_left = i;
             break;
         }
-        if(arr[r][index_left]==2)    break;
-        index_left--;
     }
     // down
-    while(index_right<=n){
-        if (index_right==n){
-            index_right=c;
+    for(int i=c+1;i<n;i++){
+        if (arr[r][i]==2){
+            index_right = i;
             break;
         }
-        if(arr[r][index_right]==2)    break;
-        index_right++;
     }
     for(int i=index_up+1;i<index_down;i++){
         nd[i][c].y = 0;
