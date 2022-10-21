@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define nono_is_handsome cin.tie(0); ios_base::sync_with_stdio(0);
-int arr[101][101], passby[101][101], proce_max=0, end_max=0, m,n;
+int arr[101][101], proce_max=0, end_max=0, m,n;
 
 struct node{
     int x, y;
